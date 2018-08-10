@@ -1,11 +1,7 @@
-.pictures{
-    height:200px;
-    width:600px;
-    background: black;
-    transition: all 1s;
+ol,ul,li{
+    list-style:none;
+    cursor: pointer;
 }
-.slideWindow{
-    height:200px;
-    width:200px;
-    border:2px red solid;
+li.active{
+   background:red; 
 }

@@ -1,21 +1,25 @@
 let view=new Vue({
     el:'#app',
     data:{
-        transformValue:``,
+        tabs:[
+            {name:"a",content:"aaa"},
+            {name:"b",content:"bbb"},
+            {name:"c",content:"ccc"}
+        ],
+        selected:"a"
     },
     template:`
     <div class="wrapper">
-        <div class="slideWindow">
-            <div class="pictures" v-bind:style="{transform:transformValue}"></div>
-        </div>
-        <button v-on:click="go(0)">1</button>
-        <button v-on:click="go(1)">2</button>
-        <button v-on:click="go(2)">3</button>
+        <ol>
+        <li v-for="tab in tabs" 
+        v-on:click="selected=tab.name"
+        v-bind:class="{active:selected===tab.name}">{{tab.name}}</li>
+        </ol>
+        <ol>
+        <li v-for="tab in tabs" v-show="selected===tab.name">{{tab.content}}</li>
+        </ol>
     </div>
     `,
     methods:{
-        go(index){
-            this.transformValue=`translateX(${-200*index}px)`
-        }
     }
 })
