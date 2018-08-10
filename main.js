@@ -1,17 +1,21 @@
 let view=new Vue({
     el:'#app',
     data:{
-        open:true
+        transformValue:``,
     },
     template:`
-    <div className="wrapper">
-    <button v-on:click="switchFloat">点我</button>
-    <span v-if="open">我是浮层</span>
+    <div class="wrapper">
+        <div class="slideWindow">
+            <div class="pictures" v-bind:style="{transform:transformValue}"></div>
+        </div>
+        <button v-on:click="go(0)">1</button>
+        <button v-on:click="go(1)">2</button>
+        <button v-on:click="go(2)">3</button>
     </div>
     `,
     methods:{
-        switchFloat(){
-            this.open=!this.open
+        go(index){
+            this.transformValue=`translateX(${-200*index}px)`
         }
     }
 })
